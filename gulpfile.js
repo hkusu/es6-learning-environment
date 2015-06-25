@@ -11,8 +11,11 @@ gulp.task('build:html', function() {
     .pipe(gulp.dest('./dest/'))
 });
 
-gulp.task('watch:src', function() {
+gulp.task('watch:js', function() {
   gulp.watch('./src/*.es6', ['build:js']);
+});
+
+gulp.task('watch:html', function() {
   gulp.watch('./src/*.html', ['build:html']);
 });
 
@@ -31,4 +34,5 @@ gulp.task('browser-sync:reload', function() {
 });
 
 gulp.task('build', ['build:js', 'build:html']);
-gulp.task('serve', ['build', 'watch:src', 'browser-sync:run']);
+gulp.task('watch', ['watch:js', 'watch:html']);
+gulp.task('serve', ['build', 'watch', 'browser-sync:run']);
